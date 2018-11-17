@@ -1,9 +1,9 @@
-# Fasmat Unison
+# Homebrew tap for different versions of Unison
 
 ## How do I install these formulae?
-`brew install fasmat/unison/<formula>`
+`brew install fasmat/unison/unisonXXX`
 
-Or `brew tap fasmat/unison` and then `brew install <formula>`.
+Or `brew tap fasmat/unison` and then `brew install unisonXXX`.
 
 Or install via URL (which will not receive updates):
 

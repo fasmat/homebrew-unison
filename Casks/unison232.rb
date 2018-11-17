@@ -1,13 +1,13 @@
-cask 'unison240' do
-  version '2.40.69'
-  sha256 '2bcc460511f2b43fa1613cc5f9ba4dd59bb12d40b5b9fb2e9f21adaf854bcf3b'
+cask 'unison232' do
+  version '2.32.12'
+  sha256 '1b820542984d575abba5911608390c8eb4f1624fdec7db86f89dc52ce08a9d2b'
 
-  url "http://unison-binaries.inria.fr/files/Unison-#{version}_x64.dmg"
+  url 'http://unison-binaries.inria.fr/files/Unison-2.32.dmg'
   name 'Unison'
   homepage 'http://unison-binaries.inria.fr/'
 
   conflicts_with formula: 'unison',
-                 cask:    ['unison232',
+                 cask:    ['unison240',
                            'unison248',
                            'unison251']
 

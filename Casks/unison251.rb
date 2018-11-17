@@ -9,7 +9,8 @@ cask 'unison251' do
   homepage 'https://www.cis.upenn.edu/~bcpierce/unison/'
 
   conflicts_with formula: 'unison',
-                 cask:    ['unison240',
+                 cask:    ['unison232',
+                           'unison240',
                            'unison248']
 
   app 'Unison.app'

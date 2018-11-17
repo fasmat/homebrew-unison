@@ -1,5 +1,7 @@
 # Homebrew tap for different versions of Unison
 
+[![Build Status](https://travis-ci.com/fasmat/homebrew-unison.svg?branch=master)](https://travis-ci.com/fasmat/homebrew-unison)
+
 ## How do I install these formulae?
 `brew install fasmat/unison/unisonXXX`
 

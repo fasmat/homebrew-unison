@@ -1,0 +1,23 @@
+jobs:
+- job: macOS
+  pool:
+    vmImage: macOS-10.14
+  steps:
+    - bash: |
+        set -e
+        sudo xcode-select --switch /Applications/Xcode_10.2.app/Contents/Developer
+        brew update
+        HOMEBREW_TAP_DIR="/usr/local/Homebrew/Library/Taps/fasmat/homebrew-trader-workstation"
+        mkdir -p "$HOMEBREW_TAP_DIR"
+        rm -rf "$HOMEBREW_TAP_DIR"
+        ln -s "$PWD" "$HOMEBREW_TAP_DIR"
+        brew test-bot
+        brew cask install unison232
+        brew cask uninstall unison232
+        brew cask install unison240
+        brew cask uninstall unison240
+        brew cask install unison248
+        brew cask uninstall unison248
+        brew cask install unison251
+        brew cask uninstall unison251
+      displayName: Run brew test-bot

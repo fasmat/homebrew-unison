@@ -4,15 +4,11 @@
 
 ## How do I install these formulae
 
-`brew install fasmat/unison/unisonXXX`
+`brew cask install fasmat/unison/unisonXXX`
 
-Or `brew tap fasmat/unison` and then `brew install unisonXXX`.
+Or `brew tap fasmat/unison` and then `brew cask install unisonXXX`.
 
 Or install via URL (which will not receive updates):
-
-```bash
-brew install https://raw.githubusercontent.com/fasmat/homebrew-unison/master/Formula/<formula>.rb
-```
 
 ## Documentation
 

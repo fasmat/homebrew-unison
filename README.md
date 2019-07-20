@@ -1,6 +1,6 @@
 # Homebrew tap for different versions of Unison
 
-[![Build Status](https://travis-ci.com/fasmat/homebrew-unison.svg?branch=master)](https://travis-ci.com/fasmat/homebrew-unison)
+[![Build Status](https://fasmat.visualstudio.com/homebrew-trader-workstation/_apis/build/status/fasmat.homebrew-unison?branchName=master)](https://fasmat.visualstudio.com/homebrew-trader-workstation/_build/latest?definitionId=2&branchName=master)
 
 ## How do I install these formulae
 

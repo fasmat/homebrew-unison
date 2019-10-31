@@ -5,7 +5,10 @@ jobs:
   steps:
     - bash: |
         set -e
-        sudo xcode-select --switch /Applications/Xcode_10.2.app/Contents/Developer
+        set -o errexit
+        set -o pipefail
+
+        sudo xcode-select --switch /Applications/Xcode_10.3.app/Contents/Developer
         brew update
         HOMEBREW_TAP_DIR="/usr/local/Homebrew/Library/Taps/fasmat/homebrew-trader-workstation"
         mkdir -p "$HOMEBREW_TAP_DIR"
@@ -20,4 +23,4 @@ jobs:
         brew cask uninstall unison248
         brew cask install unison251
         brew cask uninstall unison251
-      displayName: Run brew test-bot
+      displayName: Test install and uninstall of unison versions

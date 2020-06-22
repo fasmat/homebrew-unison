@@ -1,26 +1,42 @@
-jobs:
-- job: macOS
-  pool:
-    vmImage: macOS-10.14
-  steps:
-    - bash: |
-        set -e
-        set -o errexit
-        set -o pipefail
+# Only run for PRs and master
+trigger:
+- master
 
-        sudo xcode-select --switch /Applications/Xcode_10.3.app/Contents/Developer
-        brew update
-        HOMEBREW_TAP_DIR="/usr/local/Homebrew/Library/Taps/fasmat/homebrew-trader-workstation"
-        mkdir -p "$HOMEBREW_TAP_DIR"
-        rm -rf "$HOMEBREW_TAP_DIR"
-        ln -s "$PWD" "$HOMEBREW_TAP_DIR"
-        brew test-bot
-        brew cask install unison232
-        brew cask uninstall unison232
-        brew cask install unison240
-        brew cask uninstall unison240
-        brew cask install unison248
-        brew cask uninstall unison248
-        brew cask install unison251
-        brew cask uninstall unison251
-      displayName: Test install and uninstall of unison versions
+pr:
+- master
+
+variables:
+  xcodeApp: /Applications/Xcode_11.5.app
+  repoName: fasmat/homebrew-unison
+
+pool:
+  vmImage: 'macOS-10.15'
+
+jobs:
+- job: Formula_CI
+  steps:
+  - script: sudo xcode-select -s $(xcodeApp)/Contents/Developer
+    displayName: xcode-select
+  - script: |
+      brew update-reset "$(brew --repository)"
+      HOMEBREW_TAP_DIR="/usr/local/Homebrew/Library/Taps/$(repoName)"
+      mkdir -p "$HOMEBREW_TAP_DIR"
+      rm -rf "$HOMEBREW_TAP_DIR"
+      ln -s "$PWD" "$HOMEBREW_TAP_DIR"
+    displayName: setup tap
+  - script: |
+      brew cask install unison232
+      brew cask uninstall unison232
+    displayName: brew install and uninstall unison 2.32
+  - script: |
+      brew cask install unison240
+      brew cask uninstall unison240
+    displayName: brew install and uninstall unison 2.40
+  - script: |
+      brew cask install unison248
+      brew cask uninstall unison248
+    displayName: brew install and uninstall unison 2.48
+  - script: |
+      brew cask install unison251
+      brew cask uninstall unison251
+    displayName: brew install and uninstall unison 2.51

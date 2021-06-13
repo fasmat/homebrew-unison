@@ -2,6 +2,5 @@
 
 After making all changes to the cask:
 
-- [ ] `brew cask audit --download {{cask_file}}` is error-free.
-- [ ] `brew cask style --fix {{cask_file}}` reports no offenses.
-- [ ] The commit message includes the cask’s name and version.
+- [ ] `brew audit --cask --online --strict {{cask_file}}` is error-free.
+- [ ] `brew style --cask {{cask_file}}` is error-free.

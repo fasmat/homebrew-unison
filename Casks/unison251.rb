@@ -1,22 +1,29 @@
-cask 'unison251' do
-  version '2.51.2'
-  sha256 '0738a6978fa29bb2af409322069cc20df293b770877942ac4b8774f06e774aa5'
+cask "unison251" do
+  version "2.51.2"
+  sha256 "0738a6978fa29bb2af409322069cc20df293b770877942ac4b8774f06e774aa5"
 
-  # github.com/bcpierce00/unison was verified as official when first introduced to the cask
-  url "https://github.com/bcpierce00/unison/releases/download/v#{version}/Unison-#{version}.OS.X.zip"
-  appcast 'https://github.com/bcpierce00/unison/releases.atom'
-  name 'Unison'
-  homepage 'https://www.cis.upenn.edu/~bcpierce/unison/'
+  url "https://github.com/bcpierce00/unison/releases/download/v#{version}/Unison-#{version}.OS.X.zip",
+      verified: "https://github.com/bcpierce00/unison"
+  name "Unison"
+  desc "Unsion 2.51 file-synchronization tool"
+  homepage "https://www.cis.upenn.edu/~bcpierce/unison/"
 
-  conflicts_with formula: 'unison',
-                 cask:    ['unison232',
-                           'unison240',
-                           'unison248']
+  livecheck do
+    skip "Intended to be a specific version for compatibility"
+  end
 
-  app 'Unison.app'
-  binary "#{appdir}/Unison.app/Contents/MacOS/cltool", target: 'unison'
+  conflicts_with formula: "unison",
+                 cask:    %w[
+                   unison
+                   unison232
+                   unison240
+                   unison248
+                 ]
+
+  app "Unison.app"
+  binary "#{appdir}/Unison.app/Contents/MacOS/cltool", target: "unison"
 
   postflight do
-    system_command '/usr/bin/defaults', args: ['write', 'edu.upenn.cis.Unison', 'CheckCltool', '-bool', 'false']
+    system_command "/usr/bin/defaults", args: ["write", "edu.upenn.cis.Unison", "CheckCltool", "-bool", "false"]
   end
 end

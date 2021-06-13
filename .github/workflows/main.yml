@@ -1,0 +1,63 @@
+name: GitHub Actions CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  ci-test:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [macos-10.15]
+
+    steps:
+      - name: Set up Homebrew
+        id: set-up-homebrew
+        uses: Homebrew/actions/setup-homebrew@master
+
+      - name: Cache Homebrew Bundler RubyGems
+        id: cache
+        uses: actions/cache@v1
+        with:
+          path: ${{ steps.set-up-homebrew.outputs.gems-path }}
+          key: ${{ runner.os }}-rubygems-${{ steps.set-up-homebrew.outputs.gems-hash }}
+          restore-keys: ${{ runner.os }}-rubygems-
+
+      - name: Install Homebrew Bundler RubyGems
+        if: steps.cache.outputs.cache-hit != 'true'
+        run: brew install-bundler-gems
+
+      - name: Unison 2.32
+        run: |
+          brew style --cask ./Casks/unison232.rb
+          brew audit --cask --strict ./Casks/unison232.rb 
+
+          brew install --cask ./Casks/unison232.rb
+          brew uninstall --cask ./Casks/unison232.rb
+
+      - name: Unison 2.40
+        run: |
+          brew style --cask ./Casks/unison240.rb
+          brew audit --cask --strict ./Casks/unison240.rb 
+
+          brew install --cask ./Casks/unison240.rb
+          brew uninstall --cask ./Casks/unison240.rb
+
+      - name: Unison 2.48
+        run: |
+          brew style --cask ./Casks/unison248.rb
+          brew audit --cask --strict ./Casks/unison248.rb 
+
+          brew install --cask ./Casks/unison248.rb
+          brew uninstall --cask ./Casks/unison248.rb
+
+      - name: Unison 2.48
+        run: |
+          brew style --cask ./Casks/unison251.rb
+          brew audit --cask --strict ./Casks/unison251.rb 
+
+          brew install --cask ./Casks/unison251.rb
+          brew uninstall --cask ./Casks/unison251.rb

@@ -1,6 +1,8 @@
-# Homebrew tap for different versions of Unison
+# Homebrew tap for old versions of Unison
 
-[![Build Status](https://fasmat.visualstudio.com/homebrew-trader-workstation/_apis/build/status/fasmat.homebrew-unison?branchName=master)](https://fasmat.visualstudio.com/homebrew-trader-workstation/_build/latest?definitionId=2&branchName=master)
+[![Build status](https://github.com/fasmat/homebrew-unison/actions/workflows/main.yml/badge.svg)](https://github.com/fasmat/homebrew-unison/actions/workflows/main.yml)
+
+This homebrew tap provides casks for older versions of Unison for compatibility.
 
 ## How do I install these formulae
 
